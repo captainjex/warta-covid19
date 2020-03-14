@@ -1,4 +1,5 @@
 import axios from 'axios';
+import cheerio from 'cheerio';
 
 const request = axios.create({
   baseURL: 'https://infeksiemerging.kemkes.go.id/wp-json/wp/v2',
@@ -6,23 +7,33 @@ const request = axios.create({
 
 const CATEGORY_CORONA_POST = 88;
 
-const getMediaUrl = async (mediaId) => {
-  const { data: media } = await request.get(`/media/${mediaId}`);
-  return media.source_url;
+const cleanContent = (content) => {
+  const div = `<div id="root">
+    ${content}
+  </div>`;
+  const $ = cheerio.load(div);
+  const newContent = cheerio('<div></div>');
+
+  $('#root > *').each(function (i, el) {
+    const classes = $(this).attr('class');
+    if (classes) {
+      if (classes.includes('pvc')) { // remove el with class %pvc%
+        return;
+      }
+    }
+    newContent.append(el);
+  });
+
+  return newContent.html();
 };
 
-const getFormattedPost = async (post) => {
-  const featuredMediaUrl = await getMediaUrl(post.featured_media);
-
-  return {
-    id: post.id,
-    date: post.date,
-    sourceLink: post.link,
-    title: post.title.rendered,
-    content: post.content.rendered,
-    featuredMediaUrl,
-  };
-};
+const getFormattedPost = async (post) => ({
+  id: post.id,
+  date: post.date,
+  sourceLink: post.link,
+  title: post.title.rendered,
+  content: cleanContent(post.content.rendered),
+});
 
 
 export const getCoronaPosts = async () => {
