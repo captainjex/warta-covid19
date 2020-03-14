@@ -1,7 +1,10 @@
 extends ../../layout
 
 block main
-  .container
-    ul
-      for post in posts
-        li=post.title
+  div(class="container text-zircon py-8 px-6")
+    div(class="text-3xl font-semibold") Update Corona Virus
+    div(class="text-lg") Update berita dari situs Kementrian Kesehatan
+    for post in posts
+      div(class="mt-8 p-4 rounded-md bg-gunmetal")
+        a(class="text-sm text-xl font-medium" href=`/kemkes/posts/${post.id}`)=post.title
+        div(class="text-sm mt-4")=moment(post.date).format('DD MMMM YYYY')

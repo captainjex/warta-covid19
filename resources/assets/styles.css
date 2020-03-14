@@ -1,0 +1,13 @@
+@tailwind base;
+
+@tailwind components;
+
+@tailwind utilities;
+
+article .content a {
+  text-decoration-line: underline;
+}
+
+article .content p {
+  @apply mb-4
+}
