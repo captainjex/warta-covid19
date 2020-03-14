@@ -9,14 +9,14 @@ const handleRes = (promise) => (req, res) => {
 
 const router = express.Router();
 
-router.get('/kemkes/posts', handleRes(async (req, res) => {
+router.get('/', handleRes(async (req, res) => {
   const posts = await kemkes.getCoronaPosts();
-  res.render('kemkes/index', { posts });
+  res.render('posts/index', { posts });
 }));
 
-router.get('/kemkes/posts/:id', handleRes(async (req, res) => {
+router.get('/posts/:id', handleRes(async (req, res) => {
   const post = await kemkes.getPost(req.params.id);
-  res.render('kemkes/detail', { post });
+  res.render('posts/detail', { post });
 }));
 
 export default router;

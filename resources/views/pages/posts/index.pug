@@ -8,5 +8,5 @@ block main
       a(href="https://infeksiemerging.kemkes.go.id/" class="underline")  Infeksi Emerging Kementrian Kesehatan
     for post in posts
       div(class="mt-8 p-4 rounded-md bg-gunmetal")
-        a(class="text-sm text-xl font-medium" href=`/kemkes/posts/${post.id}`)=post.title
+        a(class="text-sm text-xl font-medium" href=`/posts/${post.id}`)=post.title
         div(class="text-sm mt-4")=moment(post.date).format('DD MMMM YYYY @ HH:mm:ss')

@@ -18,10 +18,6 @@ server.use((req, res, next) => {
   next();
 });
 
-server.get('/', (req, res) => {
-  res.send('ok');
-});
-
 server.use(router);
 
 export {
