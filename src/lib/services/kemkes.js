@@ -8,11 +8,12 @@ const request = axios.create({
 const CATEGORY_CORONA_POST = 88;
 
 const cleanContent = (content) => {
-  const div = `<div id="root">
-    ${content}
-  </div>`;
-  const $ = cheerio.load(div);
-  const newContent = cheerio('<div></div>');
+  const $ = cheerio.load(`
+    <div id="root">
+      ${content}
+    </div>
+  `);
+  const cleanedContent = cheerio('<div></div>');
 
   $('#root > *').each(function (i, el) {
     const classes = $(this).attr('class');
@@ -21,10 +22,10 @@ const cleanContent = (content) => {
         return;
       }
     }
-    newContent.append(el);
+    cleanedContent.append(el);
   });
 
-  return newContent.html();
+  return cleanedContent.html();
 };
 
 const getFormattedPost = async (post) => ({
