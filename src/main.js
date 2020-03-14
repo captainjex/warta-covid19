@@ -1,3 +1,6 @@
-import server from './lib/example';
+import { server } from './web';
+import { PORT } from './config';
 
-server();
+server.listen(PORT, () => {
+  console.log(`Server running at http://127.0.0.1:${PORT}`);
+});
