@@ -1,0 +1,28 @@
+cache:
+  key: ${CI_COMMIT_REF_SLUG}
+  paths:
+    - node_modules/
+
+variables:
+  GIT_CLEAN_FLAGS: none
+
+before_script:
+    - export NVM_DIR="$HOME/.nvm"
+    - . ${NVM_DIR}/nvm.sh
+    - nvm use 10
+    - npm install
+
+stages:
+  - deploy
+
+deploy:
+  stage: deploy
+  tags:
+    - warta-covid19
+  script:
+    - echo "Deploy Bot to server"
+    - npm run build
+    - pm2 start ecosystem.config.js
+    # - pm2 start ecosystem.config.js --env production
+  only:
+    - master
