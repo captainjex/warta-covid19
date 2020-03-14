@@ -3,5 +3,9 @@ extends ../../layout
 block main
   article(class="max-w-2xl text-zircon py-8 px-6")
     div(class="text-3xl font-semibold")=post.title
-    div(class="text-sm mt-1")=moment(post.date).format('DD MMMM YYYY')
+    div(class="text-sm mt-1")=moment(post.date).format('DD MMMM YYYY @ HH:mm:ss')
     div(class="mt-4 leading-loose content")!=post.content
+    hr
+    div(class="italic text-sm mt-4")
+      | Isi tulisan ini merupakan mirror dari situs
+      a(href=post.sourceLink class="underline")  Infeksi Emerging Kementrian Kesehatan
