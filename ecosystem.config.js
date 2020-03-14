@@ -2,7 +2,7 @@
 module.exports = {
   apps: [{
     name: 'warta-covid19',
-    script: 'node .',
+    script: 'dist/main.js',
     // Options reference: https://pm2.io/doc/en/runtime/reference/ecosystem-file/
     instances: 1,
     autorestart: true,
