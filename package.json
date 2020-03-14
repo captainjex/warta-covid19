@@ -2,9 +2,9 @@
   "name": "pocov-bot",
   "version": "1.0.0",
   "description": "Example Node Server w/ Babel",
-  "main": "dist/index.js",
+  "main": "dist/main.js",
   "scripts": {
-    "dev": "babel-node src/index.js",
+    "dev": "nodemon src/main.js --ext js --exec \"babel-node\"",
     "build": "babel src -d dist",
     "start": "npm run build && node .",
     "lint": "eslint \"**/*.js\"",
