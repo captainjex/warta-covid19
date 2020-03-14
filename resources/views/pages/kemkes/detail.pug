@@ -1,7 +1,7 @@
 extends ../../layout
 
 block main
-  article(class="max-w-2xl text-zircon p-6")
+  article(class="max-w-2xl text-zircon px-6")
     div(class="text-3xl font-semibold")=post.title
     div(class="text-sm mt-1")=moment(post.date).format('DD MMMM YYYY @ HH:mm:ss')
     div(class="mt-4 leading-loose content")!=post.content
