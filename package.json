@@ -1,5 +1,5 @@
 {
-  "name": "warta-covid",
+  "name": "warta-covid19",
   "version": "1.0.0",
   "description": "Example Node Server w/ Babel",
   "main": "dist/main.js",
