@@ -1,11 +1,11 @@
 extends ../../layout
 
 block main
-  div(class="container text-zircon py-8 px-6")
+  div(class="container text-zircon p-6")
     div(class="text-3xl font-semibold") Update Corona Virus
     div(class="text-lg")
       | Update berita dari situs
-      a(href="https://infeksiemerging.kemkes.go.id/") Infeksi Emerging Kementrian Kesehatan
+      a(href="https://infeksiemerging.kemkes.go.id/" class="underline")  Infeksi Emerging Kementrian Kesehatan
     for post in posts
       div(class="mt-8 p-4 rounded-md bg-gunmetal")
         a(class="text-sm text-xl font-medium" href=`/kemkes/posts/${post.id}`)=post.title
